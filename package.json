@@ -1,0 +1,28 @@
+{
+  "name": "as-repro",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:DevCycleHQ/as-repro.git",
+  "author": "Adam Wootton <adam@taplytics.com>",
+  "license": "MIT",
+  "dependencies": {
+    "assemblyscript-json": "^1.1.0"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
+    }
+  },
+  "scripts": {
+    "asbuild:debug": "asc assembly/index.ts --target debug",
+    "asbuild:release": "asc assembly/index.ts --target release",
+    "asbuild": "yarn asbuild:debug && yarn asbuild:release",
+    "test": "node tests",
+    "start": "yarn asbuild && node test.mjs"
+  },
+  "devDependencies": {
+    "assemblyscript": "^0.20.8"
+  }
+}
